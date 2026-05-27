@@ -1,16 +1,18 @@
 const projects = [
   {
+    id: 1,
     title: "Hex Surface Model",
-    description: "Open-source Python CCM pipeline for H3-based mobility analysis.",
-    tags: ["Python", "GIS", "H3", "ArcGIS"],
-    link: "https://github.com/TheWendarr/Raster-Sampling-to-Hex-Cells"
+    description: "Open-source Python CCM pipeline for terrain mobility analysis using H3 hexagonal tessellation. Implements hierarchical A* pathfinding across multi-LOD hex grids with configurable vehicle profiles and factor-scoring from DEM, slope, vegetation, and soil data.",
+    tags: ["Python", "H3", "ArcGIS", "GeoPandas", "A*"],
+    category: "Geospatial",
+    link: "https://github.com/TheWendarr"
   },
   {
+    id: 2,
     title: "Runners Dashboard",
-    description: "Flask app for visualizing FIT file running data with Chart.js.",
-    tags: ["Flask", "Python", "Chart.js", "JavaScript"],
+    description: "Full-stack Flask web application for parsing and visualizing FIT file running data. Features interactive Chart.js dashboards with pace zones, elevation profiles, 1000-point downsampling, and toggleable time/distance/percent comparison axes.",
+    tags: ["Python", "Flask", "Chart.js", "JavaScript"],
+    category: "Web App",
     link: "https://github.com/TheWendarr/Runners-Dashboard"
-  },
-  // add more...
+  }
 ];
-

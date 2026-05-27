@@ -3,24 +3,207 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wendell — Portfolio</title>
+  <meta name="description" content="Wendell — Geospatial Analyst, Software Developer, and U.S. Army veteran specializing in GIS, Python, and defense technology." />
+  <title>Wendell's Portfolio</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <h1>Wendell</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
 
-  <section id="about">...</section>
-  <section id="projects" class="project-grid"></section>
-  <section id="contact">...</section>
+  <!-- Navigation -->
+  <nav id="main-nav">
+    <a class="nav-logo" href="#hero">W<span>.</span></a>
+    <button id="menu-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul id="nav-menu">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-  <script src="projects.js"></script>
-  <script src="main.js"></script>
-</body>
-</html>
+  <!-- Hero -->
+  <section id="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="container">
+      <div class="hero-content">
+        <p class="hero-eyebrow">// Geospatial · Software · Defense</p>
+        <h1 class="hero-name">
+          Wendell
+          <span class="accent-line">McGowan</span>
+        </h1>
+        <p class="hero-sub">
+          <strong>GIS Analyst & Software Developer</strong> with a background
+          in U.S. Army operations and geospatial intelligence. Building tools
+          at the intersection of spatial data, systems software, and defense
+          technology.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn btn-outline" href="#contact">Get In Touch</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <p class="section-label reveal">// 01 — About</p>
+      <h2 class="section-title reveal">
+        Who I Am
+        <span class="ghost-num">01</span>
+      </h2>
+      <div class="section-divider reveal"></div>
+
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            I'm an <strong>active-duty U.S. Army soldier</strong> with a
+            background in geospatial intelligence and a passion for building
+            software that solves real problems. My work sits at the intersection
+            of GIS analysis, data engineering, and systems administration.
+          </p>
+          <p>
+            I'm pursuing a degree with coursework in geospatial intelligence,
+            cartography, and Web GIS on the Esri/ArcGIS
+            platform. Outside the classroom, I run a homelab environment and
+            develop open-source tools for spatial analysis and data
+            visualization.
+          </p>
+          <p>
+            My goal is to transition into defense IT and contractor roles where
+            I can apply my technical depth into meaningful work.
+          </p>
+          <div class="clearance-badge">Active TS/SCI</div>
+        </div>
+
+        <div class="reveal">
+          <div class="about-stats">
+            <div class="stat-card">
+              <div class="stat-num">4+</div>
+              <div class="stat-label">Projects Shipped</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">3+</div>
+              <div class="stat-label">Years Active Duty</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">GIS</div>
+              <div class="stat-label">Geospatial Focus</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">DoD</div>
+              <div class="stat-label">8140 Aware</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <p class="section-label reveal">// 02 — Projects</p>
+      <h2 class="section-title reveal">
+        Selected Work
+        <span class="ghost-num">02</span>
+      </h2>
+      <div class="section-divider reveal"></div>
+      <div id="project-grid"></div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <div class="container">
+      <p class="section-label reveal">// 03 — Skills</p>
+      <h2 class="section-title reveal">
+        Capabilities
+        <span class="ghost-num">03</span>
+      </h2>
+      <div class="section-divider reveal"></div>
+
+      <div class="skills-grid reveal">
+
+        <div class="skill-group">
+          <h3>Languages</h3>
+          <div class="skill-item">
+            <div class="skill-meta">
+              <span class="skill-name">Python</span>
+              <span class="skill-level">Expert</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" data-level="92%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-meta">
+              <span class="skill-name">JavaScript</span>
+              <span class="skill-level">Learning</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" data-level="72%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-meta">
+              <span class="skill-name">Rust</span>
+              <span class="skill-level">Learning</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" data-level="45%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-meta">
+              <span class="skill-name">SQL</span>
+              <span class="skill-level">Proficient</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" data-level="68%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-meta">
+              <span class="skill-name">Bash / Shell</span>
+              <span class="skill-level">Proficient</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" data-level="70%"></div></div>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>Geospatial</h3>
+          <div class="skill-item">
+            <div class="skill-meta">
+              <span class="skill-name">ArcGIS / Esri Platform</span>
+              <span class="skill-level">Expert</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" data-level="90%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-meta">
+              <span class="skill-name">GeoPandas / Shapely</span>
+              <span class="skill-level">Proficient</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" data-level="78%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-meta">
+              <span class="skill-name">Remote Sensing / DEM Analysis</span>
+              <span class="skill-level">Proficient</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" data-level="72%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-meta">
+              <span class="skill-name">Web GIS / REST APIs</span>
+              <span class="skill-level">Proficient</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" data-level="74%"></div></div>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>Systems & Tools</h3>
