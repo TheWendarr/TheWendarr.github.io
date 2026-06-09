@@ -1,4 +1,4 @@
-# Wendell McGowan — Portfolio
+# Wendell McGowan Portfolio
 
 Personal portfolio site showcasing geospatial intelligence, software engineering, and cartography projects.
 
