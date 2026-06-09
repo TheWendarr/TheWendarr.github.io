@@ -1,209 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Wendell — Geospatial Analyst, Software Developer, and U.S. Army veteran specializing in GIS, Python, and defense technology." />
-  <title>Wendell's Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
+  <!-- Site Meta -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Navigation -->
-  <nav id="main-nav">
-    <a class="nav-logo" href="#hero">W<span>.</span></a>
-    <button id="menu-toggle" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
-    <ul id="nav-menu">
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#resume">Resume</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+  <!-- SEO -->
+  <title> Wendell McGowan • Geospatial &amp; Software Engineering Portfolio</title>
+  <meta name = "description" content = "Wendell McGowan • Portfolio - Geospatial Intelligence, Software Engineering, and Data Visualization."/>
+  <meta property = "og:title" content = "Wendell McGowan • Geospatial &amp; Software Engineering Portfolio"/>
+  <meta property = "og:image" content = "assets/image/portfolio-preview.png"/>
+  <meta property = "og:type" content = "website"/>
+
+  <!-- Tab Icon -->
+  <link rel="icon" type="image/x-icon" href="assets/images/Globe_Icon.png">
+  
+  <!-- CSS Libraries -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+
+  <!-- Custom CSS Style -->
+  <link rel="stylesheet" href="styles.css" />
+  
+</head>
+
+<!------------------------->
+  
+<body>
+  
+
+<!--*******************************
+ * NAVBAR
+ ********************************-->
+  
+  <nav class="navbar navbar-expand-lg sticky-top bg-white shadow-sm">
+    <div class="container">
+      <!-- Name/Logo -->
+      <a class="navbar-brand fw-semibold" href="#home">Wendell McGowan</a>
+
+      <!-- Small screen toggle button -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#nav"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        aria-controls="nav"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Collapsible Menu Content -->
+      <div id="nav" class="collapse navbar-collapse">
+        
+        <!-- Navigation Links -->
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+          <li class="nav-item">
+            <a class="nav-link" href="#projects">Projects</a>
+          </li>  
+          
+          <li class="nav-item">
+            <a class="nav-link" href="#skills">Skills</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="btn btn-resume nav-link text-white"
+              href="assets/documents/WendellMcGowan_Resume.pdf"
+              download>Download Resume</a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </nav>
 
-  <!-- Hero -->
-  <section id="hero">
-    <div class="hero-grid"></div>
-    <div class="hero-glow"></div>
+<!--*******************************
+ * HERO
+ ********************************-->
+  
+  <header id="home" class="hero d-flex align-items-center">
+    <div class="container text-center">
+      <p class="eyebrow">Geospatial Intelligence • Software Engineering • Data Visualization</p>
+      <h1 class="display-5 fw-bold">Hi, I’m Wendell.</h1>
+
+      <!-- Typing Animation -->
+      <p class="lead mb-4">
+        <span id="typed"></span
+        ><span class="cursor" aria-hidden="true">|</span>
+      </p>
+      
+      <a class="btn btn-primary" href="#projects">
+        Explore <i class="bi bi-arrow-down ms-1"></i>
+      </a>
+    </div>
+  </header>
+
+<!--*******************************
+ * FEATURED PROJECT (WIP)
+ ********************************-->
+
+  <section id = "featured-project" class = "section"></section>
+
+<!--*******************************
+ * PROJECTS
+ ********************************-->
+  
+  <section id="projects" class="section">
     <div class="container">
-      <div class="hero-content">
-        <p class="hero-eyebrow">// Geospatial · Software · Defense</p>
-        <h1 class="hero-name">
-          Wendell
-          <span class="accent-line">McGowan</span>
-        </h1>
-        <p class="hero-sub">
-          <strong>GIS Analyst & Software Developer</strong> with a background
-          in U.S. Army operations and geospatial intelligence. Building tools
-          at the intersection of spatial data, systems software, and defense
-          technology.
+      <div class="section-header">
+        <h2 class="section-title">Projects</h2>
+        <p class="section-subtitle">
+          A Collection of My Work
         </p>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="#projects">View Projects</a>
-          <a class="btn btn-outline" href="#contact">Get In Touch</a>
-        </div>
       </div>
-    </div>
-    <div class="hero-scroll">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
+
+      <!-- Project Card Filters -->
+      <div class="filters text-center mb-4">
+        <button class="btn btn-filter active" data-filter="all">All</button>
+        <button class="btn btn-filter" data-filter="carto">Cartography</button>
+        <button class="btn btn-filter" data-filter="data-science">Data Science</button>     
+        <button class="btn btn-filter" data-filter="geo-analysis">Geospatial Analysis</button>
+        <button class="btn btn-filter" data-filter="programming">Programming</button>       
+        <button class="btn btn-filter" data-filter="remote">Remote Sensing</button>
+        <button class="btn btn-filter" data-filter="web">Web Mapping</button>
+        <button class="btn btn-filter" data-filter="school">School Work</button>
+      </div>
+
+      <!-- Project Card Gallery -->
+      <div id = "project-grid" class = "row g-4"></div>
     </div>
   </section>
 
-  <!-- About -->
-  <section id="about">
+<!--*******************************
+ * SKILLS
+ ********************************-->
+  
+  <section id="skills" class="section section-alt">
     <div class="container">
-      <p class="section-label reveal">// 01 — About</p>
-      <h2 class="section-title reveal">
-        Who I Am
-        <span class="ghost-num">01</span>
-      </h2>
-      <div class="section-divider reveal"></div>
+      <div class="section-header">
+        <h2 class="section-title">Skills</h2>
+        <p class="section-subtitle">Tools &amp; Technologies I use regularly.</p>
+      </div>
 
-      <div class="about-grid">
-        <div class="about-text reveal">
-          <p>
-            I'm an <strong>active-duty U.S. Army soldier</strong> with a
-            background in geospatial intelligence and a passion for building
-            software that solves real problems. My work sits at the intersection
-            of GIS analysis, data engineering, and systems administration.
-          </p>
-          <p>
-            I'm pursuing a degree with coursework in geospatial intelligence,
-            cartography, and Web GIS on the Esri/ArcGIS
-            platform. Outside the classroom, I run a homelab environment and
-            develop open-source tools for spatial analysis and data
-            visualization.
-          </p>
-          <p>
-            My goal is to transition into defense IT and contractor roles where
-            I can apply my technical depth into meaningful work.
-          </p>
-          <div class="clearance-badge">Active TS/SCI</div>
+      <!-- Static grouping of skills -->
+      <div class="row g-3">
+        <div class="col-6 col-md-3">
+          <div class="skill">Python &amp; arcpy</div>
         </div>
-
-        <div class="reveal">
-          <div class="about-stats">
-            <div class="stat-card">
-              <div class="stat-num">4+</div>
-              <div class="stat-label">Projects Shipped</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-num">3+</div>
-              <div class="stat-label">Years Active Duty</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-num">GIS</div>
-              <div class="stat-label">Geospatial Focus</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-num">DoD</div>
-              <div class="stat-label">8140 Aware</div>
-            </div>
-          </div>
+        <div class="col-6 col-md-3">
+          <div class="skill">Rust</div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="skill">ArcGIS Pro</div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="skill">ArcGIS Online / Exp. Builder</div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="skill">QGIS</div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="skill">Flask &amp; Web Development</div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="skill">Linux &amp; Self-Hosted Infrastructure</div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="skill">Git &amp; GitHub</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Projects -->
-  <section id="projects">
+<!--*******************************
+ * ABOUT
+ ********************************-->
+  
+  <section id="about" class="section">
     <div class="container">
-      <p class="section-label reveal">// 02 — Projects</p>
-      <h2 class="section-title reveal">
-        Selected Work
-        <span class="ghost-num">02</span>
-      </h2>
-      <div class="section-divider reveal"></div>
-      <div id="project-grid"></div>
+      <div class="row align-items-center g-4">
+        
+        <!-- Profile Picture -->
+        <div class="col-md-5 text-center">
+          <img
+            src="assets/images/profile_pic.jpg"
+            alt="Portrait of Wendell McGowan"
+            class="portrait-img"
+          />
+        </div>
+
+        <!-- About Me Section -->
+        <div class="col-md-7">
+          <h2 class="section-title">About Me</h2>
+          <p class="mb-3">
+            I am an active-duty U.S. Army Geospatial Engineer Sergeant (12Y) with hands-on experience in 
+            terrain analysis, geospatial intelligence production, and mission planning. My military 
+            career has sharpened my ability to deliver precise, actionable geospatial products under 
+            real-world constraints, and I am now channeling that expertise into a civilian career at 
+            the intersection of GIS and software engineering.
+          </p>
+          <p>
+            I am completing a B.A.S. in Geospatial Intelligence &amp; Analysis at Delta State 
+            University. Outside of work and school, I build geospatial tools in Python and Rust, run
+            a self-hosted homelab, and am always looking for ways to automate and visualize.
+          </p>
+
+          <!-- Subtext Information -->
+          <p class="text-secondary small mb-0">
+            Relevant courses: Web GIS • Remote Sensing • Data Science &amp;
+            Visualization • Cartography.<br />
+            Interests: Geospatial Software Engineering, Cartography, Privacy-Focused and Open Source Infrastructure
+          </p>
+        </div>
+      </div>
     </div>
   </section>
+  
+<!--*******************************
+ * CONTACT / FOOTER
+ ********************************-->
 
-  <!-- Skills -->
-  <section id="skills">
-    <div class="container">
-      <p class="section-label reveal">// 03 — Skills</p>
-      <h2 class="section-title reveal">
-        Capabilities
-        <span class="ghost-num">03</span>
-      </h2>
-      <div class="section-divider reveal"></div>
+  <!-- Contact Info -->
+  <footer id="contact" class="footer">
+    <div class="container text-center">
+      <h2 class="mb-3">Let’s Connect</h2>
+      <p class="mb-4">
+        <a href="mailto:wendell.d.mcgowan@gmail.com">
+          wendell.d.mcgowan@gmail.com
+        </a>
+        •
+        <a href="tel:+17029028370">
+          +1 (702) 902-8370
+        </a>
+      </p>
 
-      <div class="skills-grid reveal">
+      <!-- LinkedIn Shortcut Button -->
+      <div class="d-flex justify-content-center gap-3 fs-4 mb-4">
+        <a
+          class="text-body"
+          href="https://www.linkedin.com/in/wendell-mcgowan-5798a328b/"
+          aria-label="LinkedIn"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i class="bi bi-linkedin"></i>
+        </a>
 
-        <div class="skill-group">
-          <h3>Languages</h3>
-          <div class="skill-item">
-            <div class="skill-meta">
-              <span class="skill-name">Python</span>
-              <span class="skill-level">Expert</span>
-            </div>
-            <div class="bar-track"><div class="bar-fill" data-level="92%"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-meta">
-              <span class="skill-name">JavaScript</span>
-              <span class="skill-level">Learning</span>
-            </div>
-            <div class="bar-track"><div class="bar-fill" data-level="72%"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-meta">
-              <span class="skill-name">Rust</span>
-              <span class="skill-level">Learning</span>
-            </div>
-            <div class="bar-track"><div class="bar-fill" data-level="45%"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-meta">
-              <span class="skill-name">SQL</span>
-              <span class="skill-level">Proficient</span>
-            </div>
-            <div class="bar-track"><div class="bar-fill" data-level="68%"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-meta">
-              <span class="skill-name">Bash / Shell</span>
-              <span class="skill-level">Proficient</span>
-            </div>
-            <div class="bar-track"><div class="bar-fill" data-level="70%"></div></div>
-          </div>
-        </div>
+        <!--GitHub Shortcut Button -->
+        <a
+          class="text-body"
+          href="https://github.com/TheWendarr"
+          aria-label="GitHub"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i class="bi bi-github"></i>
+        </a>
+      </div>
 
-        <div class="skill-group">
-          <h3>Geospatial</h3>
-          <div class="skill-item">
-            <div class="skill-meta">
-              <span class="skill-name">ArcGIS / Esri Platform</span>
-              <span class="skill-level">Expert</span>
-            </div>
-            <div class="bar-track"><div class="bar-fill" data-level="90%"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-meta">
-              <span class="skill-name">GeoPandas / Shapely</span>
-              <span class="skill-level">Proficient</span>
-            </div>
-            <div class="bar-track"><div class="bar-fill" data-level="78%"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-meta">
-              <span class="skill-name">Remote Sensing / DEM Analysis</span>
-              <span class="skill-level">Proficient</span>
-            </div>
-            <div class="bar-track"><div class="bar-fill" data-level="72%"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-meta">
-              <span class="skill-name">Web GIS / REST APIs</span>
-              <span class="skill-level">Proficient</span>
-            </div>
-            <div class="bar-track"><div class="bar-fill" data-level="74%"></div></div>
-          </div>
-        </div>
 
-        <div class="skill-group">
-          <h3>Systems & Tools</h3>
+<!--*******************************
+ * JS LIBRARIES & SITE SCRIPT
+ ********************************-->
+  
+  <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src = "projects.js"></script>
+  <script src = "main.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

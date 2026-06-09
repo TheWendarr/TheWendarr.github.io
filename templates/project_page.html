@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Site Meta -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- SEO -->
+  <title id="page-title">Project | Wendell McGowan</title>
+  <meta property = "og:title" content = "Project Details"/>
+  <meta property = "og:image" content = "assets/image/portfolio-preview.png"/>
+  <meta property = "og:type" content = "website"/>
+
+  <!-- Tab Icon -->
+  <link rel="icon" type="image/x-icon" href="../assets/images/Globe_Icon.png">
+
+  <!-- CSS Libraries -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Custom CSS Style -->
+  <link rel="stylesheet" href="../styles.css" />
+
+  <!-- Enable ArcGIS Online content -->
+  <script type="module" src="https://js.arcgis.com/embeddable-components/4.33/arcgis-embeddable-components.esm.js"></script>
+</head>
+
+<body>
+
+<!--*******************************
+ * NAVIGATION
+ ********************************-->
+<nav class="navbar navbar-expand-lg sticky-top bg-white shadow-sm">
+  <div class="container">
+    <!-- Name / Logo -->
+    <a class="navbar-brand fw-semibold" href="../index.html">Wendell McGowan</a>
+    <div class="ms-auto small">
+      <!-- Return Button -->
+      <a href="../index.html#projects" class="text-decoration-none">
+        <i class="bi bi-arrow-left-short"></i> Back to Projects
+      </a>
+    </div>
+  </div>
+</nav>
+
+<main class="container my-5">
+  
+  <!-- Dynamic Dot Navigation -->
+  <nav id="dynamic-dots" class="section-dots d-none d-lg-flex" aria-label="Section navigation">
+    <button class="section-dot section-dot--top is-active" data-target="#top" aria-label="Top">
+      <i class="bi bi-heart-fill"></i>
+    </button>
+  </nav>
+
+<!--*******************************
+ * HERO
+ ********************************-->
+  <header id="top" class="project-hero p-4 p-md-5 shadow-sm mb-5">
+    <div class="row g-4 align-items-center">
+      <!-- Project Information -->
+      <div class="col-lg-7">
+        <h1 id="project-title" class="display-5 fw-semibold mb-3"></h1>
+        <p id="project-description" class="lead mb-3"></p>
+        <div id="project-tags" class="d-flex flex-wrap gap-2 mb-1"></div>
+      </div>
+
+      <!-- Project Hero Image -->
+      <div class="col-lg-5">
+        <figure class="mb-0 map-hero">
+          <div class="ratio" id="hero-container"></div>
+        </figure>
+        <figcaption id="hero-caption" class="img-caption mt-2 small text-muted"></figcaption>
+      </div>
+    </div>
+  </header>
+
+  <div class="project-body">
+
+    <!--*******************************
+     * 1. SUMMARY
+     ********************************-->
+    <section id="summary" class="section-block">
+      <h2 class="section-title">Summary</h2>
+      <p id="summary-text"></p>
+
+      <!-- Sub-info -->
+      <div class="row g-3 mt-3">
+        <div class="col-md-4"><div class="meta-card h-100"><div class="small text-muted">Time</div><div id="meta-time"></div></div></div>
+        <div class="col-md-4"><div class="meta-card h-100"><div class="small text-muted">Role</div><div id="meta-role"></div></div></div>
+        <div class="col-md-4"><div class="meta-card h-100"><div class="small text-muted">Deliverables</div><div id="meta-deliverable"></div></div></div>
+      </div>
+    </section>
+
+    <!--*******************************
+     * 2. OBJECTIVE
+     ********************************-->
+    <section id="objective" class="section-block" style="display:none;">
+      <h2 class="section-title">Objective</h2>
+      <p id="objective-text"></p>
+    </section>
+
+    <!--*******************************
+     * 3. LINKS
+     ********************************-->
+    <section id="links" class="section-block" style="display:none;">
+      <h2 class="section-title">Links</h2>
+      <ul id="links-list" class="mb-0"></ul>
+    </section>
+
+    <!--*******************************
+     * 4. GALLERY
+     ********************************-->
+    <section id="gallery" class="section-block" style="display:none;">
+      <h2 class="section-title">Gallery</h2>
+      <div id="gallery-grid" class="row g-4"></div>
+    </section>
+    
+    <!--*******************************
+     * 5. METHODS
+     ********************************-->
+    <section id="method" class="section-block" style="display:none;">
+      <h2 class="section-title">Methods</h2>
+      <ol id="method-list" class="mb-0"></ol>
+    </section>
+
+    <!--*******************************
+     * 6. SOURCES
+     ********************************-->
+    <section id="sources" class="section-block" style="display:none;">
+      <h2 class="section-title">Sources</h2>
+      <ul id="sources-list" class="mb-0"></ul>
+    </section>
+
+    <!--*******************************
+     * PROJECT NAVIGATION
+     ********************************-->
+    <nav class="d-flex justify-content-between align-items-center mt-4 pt-4 border-top">
+        <a id="prev-link" class="btn btn-outline-secondary" href="#">
+          <i class="bi bi-arrow-left"></i> Previous
+        </a>
+        <a class="btn btn-primary" href="../index.html#projects">All Projects</a>
+        <a id="next-link" class="btn btn-outline-secondary" href="#">
+          Next <i class="bi bi-arrow-right"></i>
+        </a>
+    </nav>
+  </div>
+</main>
+  
+<!--*******************************
+ * LIGHTBOX MODAL
+ ********************************-->
+<div class="modal fade" id="galleryModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl"> 
+    <div class="modal-content modal-dark-bg border-0"> 
+      <div class="modal-header border-0 pb-0">
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>      
+      <div class="modal-body text-center pt-0"> 
+        <img src="" class="img-fluid modal-img d-none" style="max-height: 75vh; object-fit: contain;">  
+        <div id="modal-iframe-container" class="d-none" style="height: 75vh;">
+          <iframe id="modal-iframe" src="" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <p class="text-light small mt-3 modal-caption mb-0"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="border-top py-4 small text-center">
+  <div class="container d-flex justify-content-between">
+    <div>© <span id="year"></span> Wendell McGowan</div>
+    <div class="text-muted">Built with GIS</div>
+  </div>
+</footer>
+
+<script src="../projects.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+  const id = new URLSearchParams(window.location.search).get("id");
+  const projectIndex = projects.findIndex(p => p.id === id);
+  const project = projects[projectIndex];
+
+  if (!project) window.location.href = '../index.html';
+
+  // Populating Content
+  document.getElementById("page-title").textContent = `${project.title} | Wendell McGowan`;
+  document.getElementById("project-title").textContent = project.title;
+  document.getElementById("project-description").textContent = project.description;
+  document.getElementById("project-tags").innerHTML = (project.tags || []).map(t => `<span class="badge badge-custom-blue">${t}</span>`).join("");
+
+  const hero = document.getElementById("hero-container");
+  if (project.hero?.type === "arcgis") {
+    hero.innerHTML = `<arcgis-embedded-map item-id="${project.hero.itemId}" theme="light"></arcgis-embedded-map>`;
+  } else {
+    hero.innerHTML = `<img src="../${project.hero.src}" alt="${project.title}">`;
+  }
+  document.getElementById("hero-caption").textContent = project.hero?.caption || "";
+
+  document.getElementById("summary-text").textContent = project.summary || "";
+  document.getElementById("meta-time").textContent = project.time || "";
+  document.getElementById("meta-role").textContent = project.role || "";
+  document.getElementById("meta-deliverable").textContent = project.deliverable || "";
+
+  // Helper to show sections only if data exists
+  const setupSection = (sectionId, data, contentId, isList = true) => {
+    if (data && (Array.isArray(data) ? data.length > 0 : data.trim() !== "")) {
+      document.getElementById(sectionId).style.display = 'block';
+      if(contentId) {
+        document.getElementById(contentId).innerHTML = isList 
+          ? data.map(i => `<li>${i}</li>`).join("")
+          : data;
+      }
+      return true;
+    }
+    return false;
+  };
+
+  setupSection('objective', project.objective, 'objective-text', false);
+  setupSection('method', project.method, 'method-list');
+  setupSection('sources', project.sources, 'sources-list');
+
+  if (project.links) {
+    document.getElementById('links').style.display = 'block';
+    document.getElementById('links-list').innerHTML = project.links.map(l => `<li><a href="${l.url}" target="_blank">${l.label}</a></li>`).join("");
+  }
+
+  // Gallery Logic with Universal ArcGIS Support
+  if (project.gallery?.length) {
+    document.getElementById('gallery').style.display = 'block';
+    const grid = document.getElementById('gallery-grid');
+    const isOdd = project.gallery.length % 2 !== 0;
+
+    grid.innerHTML = project.gallery.map((item, index) => {
+      const isFeatured = isOdd && index === 0;
+      const columnClass = isFeatured ? 'col-12' : 'col-12 col-md-6';
+
+      let contentHtml = "";
+
+      if (item.type === "arcgis-map") {
+        contentHtml = `
+          <div class="arcgis-box">
+            <arcgis-embedded-map
+              item-id="${item.itemId}"
+              theme="light">
+            </arcgis-embedded-map>
+          </div>`;
+      }
+
+      else if (item.type === "arcgis-app") {
+        contentHtml = `
+          <div class="arcgis-box" style="position: relative;">
+            <div class="iframe-overlay" onclick="openMapModal('${item.url}', '${item.caption}')" 
+                 style="position:absolute; top:0; left:0; width:100%; height:100%; cursor:zoom-in; z-index:2;">
+            </div>
+            <iframe src="${item.url}" width="100%" height="100%" frameborder="0" style="pointer-events:none;"></iframe>
+          </div>`;
+      }
+
+      else {
+        contentHtml = `
+          <img
+            src="../${item.src}"
+            alt="${item.caption || 'Gallery Image'}">`;
+      }
+
+      return `
+        <div class="${columnClass}">
+          <figure class="gallery-card">
+            ${contentHtml}
+            <figcaption>${item.caption || ""}</figcaption>
+          </figure>
+        </div>`;
+    }).join("");
+  }
+
+  // Prev/Next Navigation
+  const prevBtn = document.getElementById('prev-link');
+  const nextBtn = document.getElementById('next-link');
+  if(projectIndex > 0) prevBtn.href = `project_page.html?id=${projects[projectIndex-1].id}`;
+  else prevBtn.classList.add('disabled');
+  if(projectIndex < projects.length - 1) nextBtn.href = `project_page.html?id=${projects[projectIndex+1].id}`;
+  else nextBtn.classList.add('disabled');
+
+  // Dot Nav Generation
+  const dotNav = document.getElementById('dynamic-dots');
+  const sectionOrder = ['summary', 'objective', 'links', 'gallery', 'method', 'sources'];
+  
+  sectionOrder.forEach(sectionId => {
+    const sec = document.getElementById(sectionId);
+    if(sec && sec.style.display !== 'none') {
+      const btn = document.createElement('button');
+      btn.className = 'section-dot';
+      btn.dataset.target = `#${sectionId}`;
+      btn.setAttribute('aria-label', sectionId);
+      dotNav.appendChild(btn);
+    }
+  });
+
+  // Smooth Scroll and ScrollSpy
+  const allDots = document.querySelectorAll('.section-dot');
+  allDots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const target = document.querySelector(dot.dataset.target);
+      if (dot.dataset.target === '#top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      else target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '-15% 0px -80% 0px', 
+    threshold: 0
+  };
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = `#${entry.target.id}`;
+        allDots.forEach(dot => {
+          dot.classList.toggle('is-active', dot.dataset.target === id);
+        });
+      }
+    });
+  }, observerOptions);
+
+  const topSection = document.getElementById('top');
+  if (topSection) observer.observe(topSection);
+
+  document.querySelectorAll('.section-block').forEach(s => {
+    if (s.style.display !== 'none') {
+      observer.observe(s);
+    }
+  });
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY < 100) {
+      allDots.forEach(dot => {
+        dot.classList.toggle('is-active', dot.dataset.target === '#top');
+      });
+    }
+  });
+
+  // --- Lightbox & Modal Logic ---
+  const modalElement = document.getElementById('galleryModal');
+  const bsModal = new bootstrap.Modal(modalElement);
+  
+  const modalImg = document.querySelector('.modal-img');
+  const modalIframeContainer = document.getElementById('modal-iframe-container');
+  const modalIframe = document.getElementById('modal-iframe');
+  const modalCaption = document.querySelector('.modal-caption');
+  const modalBody = document.querySelector('.modal-body');
+
+  window.openMapModal = function(url, caption) {
+    modalImg.classList.add('d-none');                   // Hide regular image
+    modalIframeContainer.classList.remove('d-none');    // Show iframe layout container
+    modalBody.classList.remove('d-flex', 'flex-column', 'align-items-center'); // Clear image spacing
+    
+    modalIframe.src = url;
+    modalCaption.textContent = caption;
+    bsModal.show();                                    // Launch the large modal view
+  };
+
+  document.querySelectorAll('.gallery-card img').forEach(img => {
+    img.addEventListener('click', () => {
+      modalIframeContainer.classList.add('d-none');    // Hide iframe layout container
+      modalImg.classList.remove('d-none');             // Show image elements
+      modalBody.classList.add('d-flex', 'flex-column', 'align-items-center');
+      
+      modalImg.src = img.src;
+      modalCaption.textContent = img.alt;
+      modalIframe.src = "";                            // Clear iframe to kill background processes
+      bsModal.show();
+    });
+  });
+
+  modalElement.addEventListener('hidden.bs.modal', () => {
+    modalIframe.src = "";
+    modalImg.classList.add('d-none');
+    modalIframeContainer.classList.add('d-none');
+    modalBody.classList.remove('d-flex', 'flex-column', 'align-items-center');
+  });
+</script>
+</body>
+</html>
