@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Redirecting…</title>
+  <script>
+    // Old deep links used templates/project_page.html?id=<project-id>.
+    // The portfolio now opens projects in an inspector panel on the
+    // index page, deep-linked via #p=<project-id>.
+    const id = new URLSearchParams(window.location.search).get("id");
+    window.location.replace("../index.html" + (id ? "#p=" + encodeURIComponent(id) : ""));
+  </script>
+</head>
+<body>
+  <p>Redirecting to the <a href="../index.html">portfolio</a>…</p>
+</body>
+</html>

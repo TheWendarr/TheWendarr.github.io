@@ -1,180 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Site Meta -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- SEO -->
-  <title> Wendell McGowan • Geospatial &amp; Software Engineering Portfolio</title>
-  <meta name = "description" content = "Wendell McGowan • Portfolio - Geospatial Intelligence, Software Engineering, and Data Visualization."/>
-  <meta property = "og:title" content = "Wendell McGowan • Geospatial &amp; Software Engineering Portfolio"/>
-  <meta property = "og:image" content = "assets/image/portfolio-preview.png"/>
-  <meta property = "og:type" content = "website"/>
+  <title>Wendell McGowan • Geospatial &amp; Software Engineering Portfolio</title>
+  <meta name="description" content="Wendell McGowan — Geospatial Intelligence, Software Engineering, and Cartography. Terrain analysis, Python &amp; Rust tooling, and map design." />
+  <meta property="og:title" content="Wendell McGowan • Geospatial &amp; Software Engineering Portfolio" />
+  <meta property="og:image" content="assets/images/portfolio-preview.png" />
+  <meta property="og:type" content="website" />
 
   <!-- Tab Icon -->
-  <link rel="icon" type="image/x-icon" href="assets/images/Globe_Icon.png">
-  
-  <!-- CSS Libraries -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+  <link rel="icon" type="image/x-icon" href="assets/images/Globe_Icon.png" />
 
-  <!-- Custom CSS Style -->
+  <!-- Fonts: Archivo (display + body) and IBM Plex Mono (marginalia / data) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
   <link rel="stylesheet" href="styles.css" />
-  
+
+  <!-- Leaflet (hero basemap) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
 </head>
 
-<!------------------------->
-  
 <body>
-  
 
 <!--*******************************
- * NAVBAR
+ * TOP BAR — styled as map sheet header
  ********************************-->
-  
-  <nav class="navbar navbar-expand-lg sticky-top bg-white shadow-sm">
-    <div class="container">
-      <!-- Name/Logo -->
-      <a class="navbar-brand fw-semibold" href="#home">Wendell McGowan</a>
+  <header class="topbar">
+    <a class="brand" href="#home">
+      <span class="brand-hex" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="18" height="18"><polygon points="12,1.5 21.5,7 21.5,17 12,22.5 2.5,17 2.5,7" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      </span>
+      <span class="brand-name">WENDELL&nbsp;MCGOWAN</span>
+      <span class="brand-sub">GEOSPATIAL&nbsp;·&nbsp;SOFTWARE</span>
+    </a>
 
-      <!-- Small screen toggle button -->
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#nav"
-        aria-label="Toggle navigation"
-        aria-expanded="false"
-        aria-controls="nav"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <nav class="topnav" aria-label="Primary">
+      <a href="#projects">Projects</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a class="btn-resume" href="assets/documents/WendellMcGowan_Resume.pdf" download>Resume&nbsp;↓</a>
+    </nav>
 
-      <!-- Collapsible Menu Content -->
-      <div id="nav" class="collapse navbar-collapse">
-        
-        <!-- Navigation Links -->
-        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
-          <li class="nav-item">
-            <a class="nav-link" href="#projects">Projects</a>
-          </li>  
-          
-          <li class="nav-item">
-            <a class="nav-link" href="#skills">Skills</a>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link" href="#about">About</a>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="btn btn-resume nav-link text-white"
-              href="assets/documents/WendellMcGowan_Resume.pdf"
-              download>Download Resume</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-<!--*******************************
- * HERO
- ********************************-->
-  
-  <header id="home" class="hero d-flex align-items-center">
-    <div class="container text-center">
-      <p class="eyebrow">Geospatial Intelligence • Software Engineering • Data Visualization</p>
-      <h1 class="display-5 fw-bold">Hi, I’m Wendell.</h1>
-
-      <!-- Typing Animation -->
-      <p class="lead mb-4">
-        <span id="typed"></span
-        ><span class="cursor" aria-hidden="true">|</span>
-      </p>
-      
-      <a class="btn btn-primary" href="#projects">
-        Explore <i class="bi bi-arrow-down ms-1"></i>
-      </a>
-    </div>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </header>
 
 <!--*******************************
- * FEATURED PROJECT (WIP)
+ * HERO — interactive hex cost surface
  ********************************-->
+  <section id="home" class="hero">
+    <div id="basemap" aria-hidden="true"></div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <canvas id="hexfield" aria-hidden="true"></canvas>
 
-  <section id = "featured-project" class = "section"></section>
+    <div class="hero-frame" aria-hidden="true">
+      <span class="tick tick-tl"></span><span class="tick tick-tr"></span>
+      <span class="tick tick-bl"></span><span class="tick tick-br"></span>
+    </div>
+
+    <div class="hero-inner">
+      <p class="sheet-label">INDEX &nbsp;·&nbsp; DATUM: WGS-84 &nbsp;·&nbsp; FOUNTAIN, CO</p>
+      <h1>
+        Terrain into <em>data.</em><br />
+        Data into <em>decisions.</em>
+      </h1>
+      <p class="hero-lede">
+        I'm Wendell, a U.S. Army Geospatial Engineer (12Y) building the bridge to civilian
+        GIS &amp; software engineering. I write Python and Rust that turns elevation models,
+        imagery, and vectors into products people can act on.
+      </p>
+      <div class="hero-actions">
+        <a class="btn-solid" href="#projects">Open the project layers</a>
+        <a class="btn-ghost" href="https://github.com/TheWendarr" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+
+    <p id="coord-readout" class="coord-readout" aria-hidden="true">38.6822° N&nbsp;&nbsp;104.7008° W&nbsp;&nbsp;ELEV —</p>
+  </section>
 
 <!--*******************************
- * PROJECTS
+ * PROJECTS — layer panel + feature grid
  ********************************-->
-  
   <section id="projects" class="section">
     <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Projects</h2>
-        <p class="section-subtitle">
-          A Collection of My Work
-        </p>
-      </div>
+      <header class="section-head">
+        <p class="sheet-label">PROJECTS</p>
+        <h2>Project layers</h2>
+        <p class="section-sub">Toggle layers to filter the map. Select any feature to open its attribute panel.</p>
+      </header>
 
-      <!-- Project Card Filters -->
-      <div class="filters text-center mb-4">
-        <button class="btn btn-filter active" data-filter="all">All</button>
-        <button class="btn btn-filter" data-filter="carto">Cartography</button>
-        <button class="btn btn-filter" data-filter="data-science">Data Science</button>     
-        <button class="btn btn-filter" data-filter="geo-analysis">Geospatial Analysis</button>
-        <button class="btn btn-filter" data-filter="programming">Programming</button>       
-        <button class="btn btn-filter" data-filter="remote">Remote Sensing</button>
-        <button class="btn btn-filter" data-filter="web">Web Mapping</button>
-        <button class="btn btn-filter" data-filter="school">School Work</button>
-      </div>
+      <div class="projects-layout">
+        <!-- Layer control panel (filters) -->
+        <aside class="layer-panel" aria-label="Project filters">
+          <p class="layer-panel-title">LAYER CONTROL</p>
+          <div id="layer-list" class="layer-list"></div>
+          <button id="layers-reset" class="layer-reset" type="button">Show all layers</button>
+        </aside>
 
-      <!-- Project Card Gallery -->
-      <div id = "project-grid" class = "row g-4"></div>
+        <!-- Feature grid -->
+        <div id="project-grid" class="feature-grid"></div>
+      </div>
     </div>
   </section>
 
 <!--*******************************
- * SKILLS
+ * CAPABILITIES (skills)
  ********************************-->
-  
-  <section id="skills" class="section section-alt">
+  <section id="capabilities" class="section section-alt">
     <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Skills</h2>
-        <p class="section-subtitle">Tools &amp; Technologies I use regularly.</p>
-      </div>
+      <header class="section-head">
+        <p class="sheet-label">CAPABILITIES</p>
+        <h2>Toolchain</h2>
+        <p class="section-sub">What I work in day to day, from raster to runtime.</p>
+      </header>
 
-      <!-- Static grouping of skills -->
-      <div class="row g-3">
-        <div class="col-6 col-md-3">
-          <div class="skill">Python &amp; arcpy</div>
+      <div class="toolchain">
+        <div class="tool-group">
+          <p class="tool-group-label">LANGUAGES</p>
+          <ul>
+            <li>Python <span>arcpy · Flask · pandas</span></li>
+            <li>Rust <span>geospatial CLI tooling</span></li>
+            <li>SQL &amp; JS <span>data + web</span></li>
+          </ul>
         </div>
-        <div class="col-6 col-md-3">
-          <div class="skill">Rust</div>
+        <div class="tool-group">
+          <p class="tool-group-label">GEOSPATIAL</p>
+          <ul>
+            <li>ArcGIS Pro <span>analysis &amp; cartography</span></li>
+            <li>ArcGIS Online <span>Experience Builder</span></li>
+            <li>QGIS · GDAL <span>open-source stack</span></li>
+          </ul>
         </div>
-        <div class="col-6 col-md-3">
-          <div class="skill">ArcGIS Pro</div>
-        </div>
-        <div class="col-6 col-md-3">
-          <div class="skill">ArcGIS Online / Exp. Builder</div>
-        </div>
-        <div class="col-6 col-md-3">
-          <div class="skill">QGIS</div>
-        </div>
-        <div class="col-6 col-md-3">
-          <div class="skill">Flask &amp; Web Development</div>
-        </div>
-        <div class="col-6 col-md-3">
-          <div class="skill">Linux &amp; Self-Hosted Infrastructure</div>
-        </div>
-        <div class="col-6 col-md-3">
-          <div class="skill">Git &amp; GitHub</div>
+        <div class="tool-group">
+          <p class="tool-group-label">SYSTEMS</p>
+          <ul>
+            <li>Linux <span>Fedora · Debian · self-hosted</span></li>
+            <li>Git &amp; GitHub <span>version control</span></li>
+            <li>Networking <span>CompTIA Network+ track</span></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -183,99 +154,80 @@
 <!--*******************************
  * ABOUT
  ********************************-->
-  
   <section id="about" class="section">
-    <div class="container">
-      <div class="row align-items-center g-4">
-        
-        <!-- Profile Picture -->
-        <div class="col-md-5 text-center">
-          <img
-            src="assets/images/profile_pic.jpg"
-            alt="Portrait of Wendell McGowan"
-            class="portrait-img"
-          />
-        </div>
+    <div class="container about-grid">
+      <figure class="about-photo">
+        <img src="assets/images/profile_pic.jpg" alt="Portrait of Wendell McGowan" loading="lazy" />
+        <figcaption class="sheet-label">WENDELL MCGOWAN · 12Y <br> COLORADO SPRINGS, CO</figcaption>
+      </figure>
 
-        <!-- About Me Section -->
-        <div class="col-md-7">
-          <h2 class="section-title">About Me</h2>
-          <p class="mb-3">
-            I am an active-duty U.S. Army Geospatial Engineer Sergeant (12Y) with hands-on experience in 
-            terrain analysis, geospatial intelligence production, and mission planning. My military 
-            career has sharpened my ability to deliver precise, actionable geospatial products under 
-            real-world constraints, and I am now channeling that expertise into a civilian career at 
-            the intersection of GIS and software engineering.
-          </p>
-          <p>
-            I am completing a B.A.S. in Geospatial Intelligence &amp; Analysis at Delta State 
-            University. Outside of work and school, I build geospatial tools in Python and Rust, run
-            a self-hosted homelab, and am always looking for ways to automate and visualize.
-          </p>
-
-          <!-- Subtext Information -->
-          <p class="text-secondary small mb-0">
-            Relevant courses: Web GIS • Remote Sensing • Data Science &amp;
-            Visualization • Cartography.<br />
-            Interests: Geospatial Software Engineering, Cartography, Privacy-Focused and Open Source Infrastructure
-          </p>
-        </div>
+      <div class="about-text">
+        <p class="sheet-label">ABOUT</p>
+        <h2>Field to forge</h2>
+        <p>
+          I'm an active-duty U.S. Army Geospatial Engineer Staff Sergeant with hands-on experience in
+          terrain analysis, geospatial intelligence production, and mission planning. Years of
+          delivering precise, actionable geospatial products under real-world constraints taught me
+          that good analysis is worthless if it isn't usable — so I build the software that makes it usable.
+        </p>
+        <p>
+          I'm completing a B.A.S. in Geospatial Intelligence &amp; Analysis at Delta State University,
+          and I'm targeting the intersection of GIS and software engineering. Off the clock I build
+          geospatial tools in Python and Rust, run a self-hosted homelab, and chase one map per week
+          in a long-running cartography challenge.
+        </p>
+        <p class="about-meta">
+          Coursework — Web GIS · Remote Sensing · Data Science &amp; Visualization · Cartography<br />
+          Interests — Geospatial software engineering · Cartographic design · Privacy-focused &amp; open-source infrastructure
+        </p>
       </div>
     </div>
   </section>
-  
+
 <!--*******************************
  * CONTACT / FOOTER
  ********************************-->
-
-  <!-- Contact Info -->
   <footer id="contact" class="footer">
-    <div class="container text-center">
-      <h2 class="mb-3">Let’s Connect</h2>
-      <p class="mb-4">
-        <a href="mailto:wendell.d.mcgowan@gmail.com">
-          wendell.d.mcgowan@gmail.com
-        </a>
-        •
-        <a href="tel:+17029028370">
-          +1 (702) 902-8370
-        </a>
-      </p>
+    <div class="container">
+      <p class="sheet-label">CONTACT</p>
+      <h2>Plot a course</h2>
+      <p class="footer-lede">Open to GIS / software engineering opportunities in the Colorado Springs area and remote.</p>
 
-      <!-- LinkedIn Shortcut Button -->
-      <div class="d-flex justify-content-center gap-3 fs-4 mb-4">
-        <a
-          class="text-body"
-          href="https://www.linkedin.com/in/wendell-mcgowan-5798a328b/"
-          aria-label="LinkedIn"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <i class="bi bi-linkedin"></i>
-        </a>
-
-        <!--GitHub Shortcut Button -->
-        <a
-          class="text-body"
-          href="https://github.com/TheWendarr"
-          aria-label="GitHub"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <i class="bi bi-github"></i>
-        </a>
+      <div class="contact-row">
+        <a href="mailto:wendell.d.mcgowan@gmail.com">wendell.d.mcgowan@gmail.com</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <a href="tel:+17029028370">+1 (702) 902-8370</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <a href="https://www.linkedin.com/in/wendell-mcgowan-5798a328b/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <a href="https://github.com/TheWendarr" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
       </div>
 
+      <p class="footer-fine">© <span id="year"></span> Wendell McGowan · Geospatial Analysis · Software Engineering</p>
+    </div>
+  </footer>
 
 <!--*******************************
- * JS LIBRARIES & SITE SCRIPT
+ * PROJECT INSPECTOR (attribute panel)
  ********************************-->
-  
-  <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src = "projects.js"></script>
-  <script src = "main.js"></script>
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <div id="inspector-backdrop" class="inspector-backdrop" hidden></div>
+  <aside id="inspector" class="inspector" role="dialog" aria-modal="true" aria-labelledby="inspector-title" hidden>
+    <header class="inspector-head">
+      <p class="sheet-label">FEATURE ATTRIBUTES</p>
+      <button id="inspector-close" class="inspector-close" type="button" aria-label="Close project panel">✕</button>
+    </header>
+    <div id="inspector-body" class="inspector-body"><!-- populated by main.js --></div>
+  </aside>
+
+<!--*******************************
+ * LIGHTBOX
+ ********************************-->
+  <div id="lightbox" class="lightbox" hidden>
+    <img id="lightbox-img" src="" alt="" />
+    <p id="lightbox-caption" class="lightbox-caption"></p>
+  </div>
+
+  <script src="projects.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
